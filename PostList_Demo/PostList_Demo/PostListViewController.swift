@@ -35,13 +35,18 @@ class PostListViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        // Do any additional setup after loading the view.
+    }
+    
+    private func prepareView(){
         self.activePostCounts = 0
         
         self.tableView.emptyDataSetSource = self
         self.tableView.emptyDataSetDelegate = self
         
         tableView.tableFooterView = UIView()
-        // Do any additional setup after loading the view.
+        self.tableView.addSubview(refreshControl)
     }
     
     //MARK: Handle refreshing event...
@@ -49,7 +54,7 @@ class PostListViewController: UIViewController {
         self.pageNumber = 0
         self.callAPIforPostListing()
     }
-    
+
     
     //MARK: API calling metod for getting posts...
     private func callAPIforPostListing(){

@@ -9,7 +9,7 @@
 import Foundation
 import SwiftyJSON
 
-class PostModel {
+class PostModel : IsJsonable{
     
     let postID          : String!
     let title           : String!
