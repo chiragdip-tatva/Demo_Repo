@@ -30,4 +30,59 @@ class APIManager {
         sessionManager = Alamofire.SessionManager(configuration: configuration)
     }
     
+    
+    
+    
+    func callRequest(_ router: Router,
+                     onSuccess success: @escaping (_ response: BaseResponse) -> Void,
+                     onFailure failure: @escaping (_ error: APIError) -> Void) {
+        
+        guard AppDelegate.isReachable == true else {
+            let apiError = APIError(status: .offline)
+            failure(apiError)
+            return
+        }
+        
+        let path = router.path.addingPercentEncoding(withAllowedCharacters:CharacterSet.urlQueryAllowed)
+        
+        var parameter = router.parameters
+        if router.parameters == nil {
+            parameter = [:]
+        }
+        
+        //Update encoding here
+        var encoding: ParameterEncoding = JSONEncoding.default
+        if router.method == .get {
+            encoding = URLEncoding.default
+        }
+        
+        self.sessionManager.request(path!,
+                                    method: router.method,
+                                    parameters: parameter!,
+                                    encoding: encoding, headers: header).responseJSON { response  in
+                                        
+                                        guard response.result.value != nil else{
+                                            return
+                                        }
+                                        
+                                        switch response.result {
+                                        case .success:
+                                            let apiResponse = BaseResponse(response: response)
+                                            if apiResponse.success {
+                                                success(apiResponse)
+                                            } else {
+                                                let apiError = APIError(status: .failed)
+                                                failure(apiError)
+                                            }
+                                            break
+                                        case .failure(let error):
+                                            print("Error: \(error)")
+                                            let apiError = APIError(status: .failed)
+                                            failure(apiError)
+                                            break
+                                        }
+        }
+    }
+    
+    
 }

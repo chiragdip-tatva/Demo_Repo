@@ -82,7 +82,12 @@ extension PostListViewController: UITableViewDataSource{
         }
     }
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        return UITableViewCell()
+        if indexPath.section == 0 {
+            let cell = tableView.dequeueCellFromNIB(PostListingCell.self)
+            return UITableViewCell()
+        }else{
+            return UITableViewCell()
+        }
     }
 }
 

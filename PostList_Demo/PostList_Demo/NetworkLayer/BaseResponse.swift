@@ -7,41 +7,31 @@
 //
 
 import SwiftyJSON
+import Alamofire
 
 class BaseResponse {
  
+    var success: Bool = false
     var message : String?
     var data : JSON?
-    var error: JSON?
+    var errors: JSON?
     
-    
+    init(response:DataResponse<Any>) {
+        let jsonResult: JSON = JSON(response.result.value!)
+        
+        self.message = jsonResult["Message"].stringValue
+        
+        if !jsonResult["hits"].isEmpty {
+            self.data = jsonResult["hits"]
+            self.success = true
+        }else{
+            self.success = false
+            self.data = jsonResult
+        }
+        
+        if !jsonResult["error"].isEmpty {
+            self.success = false
+            self.errors = jsonResult["error"]
+        }
+    }
 }
-
-
-//class BaseResponse {
-//
-//    var status: Int = 0
-//    var success: Bool = false
-//    var message: String?
-//    var data: JSON?
-//    var errors: JSON?
-//
-//    init(response:DataResponse<Any>) {
-//        let jsonResult: JSON = JSON(response.result.value!)
-//
-//        self.status  = jsonResult["StatusCode"].intValue
-//        self.success = jsonResult["Status"].boolValue
-//        self.message = jsonResult["Message"].stringValue
-//
-//        if !jsonResult["hits"].isEmpty {
-//            self.data = jsonResult["hits"]
-//            self.success = true
-//        }else{
-//            self.data = jsonResult
-//        }
-//
-//        if !jsonResult["error"].isEmpty {
-//            self.errors = jsonResult["error"]
-//        }
-//    }
-//}
