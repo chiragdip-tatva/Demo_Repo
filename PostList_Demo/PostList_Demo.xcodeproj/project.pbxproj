@@ -20,6 +20,7 @@
 		5CCA0F5722F459F7006A2A2A /* APIRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CCA0F5622F459F7006A2A2A /* APIRouter.swift */; };
 		5CCA0F5922F45A03006A2A2A /* BaseResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CCA0F5822F45A03006A2A2A /* BaseResponse.swift */; };
 		5CCA0F5B22F45A0E006A2A2A /* APIError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CCA0F5A22F45A0E006A2A2A /* APIError.swift */; };
+		5CCA0F5E22F45FE2006A2A2A /* Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CCA0F5D22F45FE2006A2A2A /* Extension.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -38,6 +39,7 @@
 		5CCA0F5622F459F7006A2A2A /* APIRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIRouter.swift; sourceTree = "<group>"; };
 		5CCA0F5822F45A03006A2A2A /* BaseResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseResponse.swift; sourceTree = "<group>"; };
 		5CCA0F5A22F45A0E006A2A2A /* APIError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIError.swift; sourceTree = "<group>"; };
+		5CCA0F5D22F45FE2006A2A2A /* Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extension.swift; sourceTree = "<group>"; };
 		956572D671B79863B1470F24 /* Pods_PostList_Demo.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_PostList_Demo.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		CDEA6791111D4203811B65AA /* Pods-PostList_Demo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PostList_Demo.release.xcconfig"; path = "Pods/Target Support Files/Pods-PostList_Demo/Pods-PostList_Demo.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -95,6 +97,7 @@
 				5CCA0F3922F44E86006A2A2A /* AppDelegate.swift */,
 				5CCA0F3B22F44E86006A2A2A /* PostListViewController.swift */,
 				5CCA0F3D22F44E86006A2A2A /* Main.storyboard */,
+				5CCA0F5C22F45FD8006A2A2A /* Extension */,
 				5CCA0F4D22F44F17006A2A2A /* Model */,
 				5CCA0F4C22F44F17006A2A2A /* TableViewCell */,
 				5CCA0F4B22F44EFF006A2A2A /* NetworkLayer */,
@@ -131,6 +134,14 @@
 				5CCA0F4E22F44F43006A2A2A /* PostModel.swift */,
 			);
 			path = Model;
+			sourceTree = "<group>";
+		};
+		5CCA0F5C22F45FD8006A2A2A /* Extension */ = {
+			isa = PBXGroup;
+			children = (
+				5CCA0F5D22F45FE2006A2A2A /* Extension.swift */,
+			);
+			path = Extension;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -261,6 +272,7 @@
 				5CCA0F5222F45754006A2A2A /* PostListingCell.swift in Sources */,
 				5CCA0F5722F459F7006A2A2A /* APIRouter.swift in Sources */,
 				5CCA0F3C22F44E86006A2A2A /* PostListViewController.swift in Sources */,
+				5CCA0F5E22F45FE2006A2A2A /* Extension.swift in Sources */,
 				5CCA0F5522F459EE006A2A2A /* APIManager.swift in Sources */,
 				5CCA0F5922F45A03006A2A2A /* BaseResponse.swift in Sources */,
 				5CCA0F5B22F45A0E006A2A2A /* APIError.swift in Sources */,
