@@ -14,6 +14,8 @@
 		5CCA0F4122F44E87006A2A2A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5CCA0F4022F44E87006A2A2A /* Assets.xcassets */; };
 		5CCA0F4422F44E87006A2A2A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5CCA0F4222F44E87006A2A2A /* LaunchScreen.storyboard */; };
 		5CCA0F4F22F44F43006A2A2A /* PostModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CCA0F4E22F44F43006A2A2A /* PostModel.swift */; };
+		5CCA0F5222F45754006A2A2A /* PostListingCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CCA0F5022F45754006A2A2A /* PostListingCell.swift */; };
+		5CCA0F5322F45754006A2A2A /* PostListingCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5CCA0F5122F45754006A2A2A /* PostListingCell.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,6 +28,8 @@
 		5CCA0F4322F44E87006A2A2A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		5CCA0F4522F44E87006A2A2A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		5CCA0F4E22F44F43006A2A2A /* PostModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostModel.swift; sourceTree = "<group>"; };
+		5CCA0F5022F45754006A2A2A /* PostListingCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostListingCell.swift; sourceTree = "<group>"; };
+		5CCA0F5122F45754006A2A2A /* PostListingCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PostListingCell.xib; sourceTree = "<group>"; };
 		956572D671B79863B1470F24 /* Pods_PostList_Demo.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_PostList_Demo.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		CDEA6791111D4203811B65AA /* Pods-PostList_Demo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PostList_Demo.release.xcconfig"; path = "Pods/Target Support Files/Pods-PostList_Demo/Pods-PostList_Demo.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -103,6 +107,8 @@
 		5CCA0F4C22F44F17006A2A2A /* TableViewCell */ = {
 			isa = PBXGroup;
 			children = (
+				5CCA0F5022F45754006A2A2A /* PostListingCell.swift */,
+				5CCA0F5122F45754006A2A2A /* PostListingCell.xib */,
 			);
 			path = TableViewCell;
 			sourceTree = "<group>";
@@ -175,6 +181,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5CCA0F5322F45754006A2A2A /* PostListingCell.xib in Resources */,
 				5CCA0F4422F44E87006A2A2A /* LaunchScreen.storyboard in Resources */,
 				5CCA0F4122F44E87006A2A2A /* Assets.xcassets in Resources */,
 				5CCA0F3F22F44E86006A2A2A /* Main.storyboard in Resources */,
@@ -239,6 +246,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5CCA0F5222F45754006A2A2A /* PostListingCell.swift in Sources */,
 				5CCA0F3C22F44E86006A2A2A /* PostListViewController.swift in Sources */,
 				5CCA0F4F22F44F43006A2A2A /* PostModel.swift in Sources */,
 				5CCA0F3A22F44E86006A2A2A /* AppDelegate.swift in Sources */,
