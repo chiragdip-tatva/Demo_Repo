@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import DZNEmptyDataSet
 
 class PostListViewController: UIViewController {
     
@@ -14,22 +15,41 @@ class PostListViewController: UIViewController {
     @IBOutlet weak private var btnActivatePostCount: UIButton!
     
     private var postList = [PostModel]()
-    //MARK: Pagination related params
-    
-    private var pageNumber: Int = 0
-    private var isCurrentlyAPICalling: Bool = false
     
     private var activePostCounts: Int = 0 {
         didSet{
             self.btnActivatePostCount.setTitle("\(self.activePostCounts)", for: .normal)
         }
     }
+    
+    //MARK: Pagination related params
+    private var pageNumber: Int = 0
+    private var isCurrentlyAPICalling: Bool = false
+    
+    lazy private var refreshControl: UIRefreshControl = {
+        let refreshControl = UIRefreshControl()
+        refreshControl.addTarget(self, action:
+            #selector(PostListViewController.handleRefreshing(_:)), for: UIControl.Event.valueChanged)
+        return refreshControl
+    }()
 
     override func viewDidLoad() {
         super.viewDidLoad()
         self.activePostCounts = 0
+        
+        self.tableView.emptyDataSetSource = self
+        self.tableView.emptyDataSetDelegate = self
+        
+        tableView.tableFooterView = UIView()
         // Do any additional setup after loading the view.
     }
+    
+    //MARK: Handle refreshing event...
+    @objc private func handleRefreshing(_ refreshControl:UIRefreshControl){
+        self.pageNumber = 0
+        self.callAPIforPostListing()
+    }
+    
     
     //MARK: API calling metod for getting posts...
     private func callAPIforPostListing(){
@@ -61,4 +81,13 @@ extension PostListViewController: UITableViewDataSource{
     }
 }
 
+
+extension PostListViewController: DZNEmptyDataSetSource, DZNEmptyDataSetDelegate{
+    func title(forEmptyDataSet scrollView: UIScrollView!) -> NSAttributedString! {
+        let emptyMsg = "No data retrieved."
+        let myAttribute = [NSAttributedString.Key.foregroundColor: UIColor.black, NSAttributedString.Key.font: UIFont.systemFont(ofSize: 30.0)]
+        let myAttrString = NSAttributedString(string: emptyMsg, attributes: myAttribute)
+        return myAttrString
+    }
+}
 
