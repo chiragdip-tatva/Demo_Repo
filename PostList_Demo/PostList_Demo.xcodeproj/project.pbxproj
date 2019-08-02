@@ -57,11 +57,35 @@
 				5CCA0F3922F44E86006A2A2A /* AppDelegate.swift */,
 				5CCA0F3B22F44E86006A2A2A /* ViewController.swift */,
 				5CCA0F3D22F44E86006A2A2A /* Main.storyboard */,
+				5CCA0F4D22F44F17006A2A2A /* Model */,
+				5CCA0F4C22F44F17006A2A2A /* TableViewCell */,
+				5CCA0F4B22F44EFF006A2A2A /* NetworkLayer */,
 				5CCA0F4022F44E87006A2A2A /* Assets.xcassets */,
 				5CCA0F4222F44E87006A2A2A /* LaunchScreen.storyboard */,
 				5CCA0F4522F44E87006A2A2A /* Info.plist */,
 			);
 			path = PostList_Demo;
+			sourceTree = "<group>";
+		};
+		5CCA0F4B22F44EFF006A2A2A /* NetworkLayer */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = NetworkLayer;
+			sourceTree = "<group>";
+		};
+		5CCA0F4C22F44F17006A2A2A /* TableViewCell */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = TableViewCell;
+			sourceTree = "<group>";
+		};
+		5CCA0F4D22F44F17006A2A2A /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
