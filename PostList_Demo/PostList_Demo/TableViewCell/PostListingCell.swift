@@ -41,7 +41,7 @@ class PostListingCell: UITableViewCell {
             switchIsActivatedPost.isOn = postModel.isActivatedPost
         
             if let date = self.sourceDateFormatter.date(from: postModel.createdAt) as Date? {
-                labelCreatedAt.text = self.destDateformatter.string(from: date)
+                labelCreatedAt.text = "Created At " + self.destDateformatter.string(from: date)
             }
         }
     }

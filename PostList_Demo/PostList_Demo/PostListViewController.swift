@@ -36,6 +36,8 @@ class PostListViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        self.prepareView()
+        
         // Do any additional setup after loading the view.
     }
     
@@ -45,8 +47,8 @@ class PostListViewController: UIViewController {
         self.tableView.emptyDataSetSource = self
         self.tableView.emptyDataSetDelegate = self
         
-        tableView.tableFooterView = UIView()
         self.tableView.addSubview(refreshControl)
+        tableView.tableFooterView = UIView()
     }
     
     //MARK: Handle refreshing event...
@@ -58,14 +60,39 @@ class PostListViewController: UIViewController {
     
     //MARK: API calling metod for getting posts...
     private func callAPIforPostListing(){
-        
+        isCurrentlyAPICalling = true
+        APIManager.shared.callRequest(Router.getPostListing(pageNumber+1), onSuccess: { (response) in
+            self.isCurrentlyAPICalling = false
+            self.refreshControl.endRefreshing()
+            if response.success{
+                self.postList.append(contentsOf: (response.data?.arrayValue.map({ PostModel.init(parameter: $0) }))!)
+                self.activePostCounts = self.postList.filter({ $0.isActivatedPost }).count
+                self.tableView.reloadData()
+            }else{
+                print("API failed")
+            }
+        }) { (error) in
+            self.isCurrentlyAPICalling = false
+            self.refreshControl.endRefreshing()
+            print("error")
+        }
     }
 }
 
 //MARK: TableView Delegate Methods
 extension PostListViewController : UITableViewDelegate{
     func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
-
+        if indexPath.section == 1, !isCurrentlyAPICalling {
+            self.callAPIforPostListing()
+        }
+    }
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        if indexPath.section == 0 {
+            return UITableView.automaticDimension
+        }else{
+            return 20.0
+        }
     }
 }
 
@@ -84,9 +111,21 @@ extension PostListViewController: UITableViewDataSource{
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if indexPath.section == 0 {
             let cell = tableView.dequeueCellFromNIB(PostListingCell.self)
-            return UITableViewCell()
+            cell.postModel = postList[indexPath.row]
+            cell.delegate = self
+            return cell
         }else{
             return UITableViewCell()
+        }
+    }
+}
+
+extension PostListViewController: PostListingDelegate{
+    func didSwitchTo(_ cell: PostListingCell) {
+        if cell.postModel.isActivatedPost{
+            self.activePostCounts += 1
+        }else{
+            self.activePostCounts -= 1
         }
     }
 }
