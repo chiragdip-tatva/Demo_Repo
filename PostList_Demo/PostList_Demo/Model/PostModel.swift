@@ -6,8 +6,20 @@
 //  Copyright © 2019 MAC190. All rights reserved.
 //
 
-import UIKit
+import Foundation
+import SwiftyJSON
 
 class PostModel {
-
+    
+    let postID          : String!
+    let title           : String!
+    let createdAt       : String!
+    var isActivatedPost : Bool = false
+    
+    //MARK: init
+    required init(parameter: JSON) {
+        postID         = parameter["objectID"].stringValue
+        title          = parameter["title"].stringValue
+        createdAt      = parameter["created_at"].stringValue
+    }
 }
