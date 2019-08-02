@@ -37,12 +37,8 @@ class PostListingCell: UITableViewCell {
     var postModel: PostModel! {
         didSet {
             labelTitle.text = postModel.title
-            labelCreatedAt.text = "-"
+            labelCreatedAt.text = postModel.createdAt
             switchIsActivatedPost.isOn = postModel.isActivatedPost
-        
-            if let date = self.sourceDateFormatter.date(from: postModel.createdAt) as Date? {
-                labelCreatedAt.text = "Created At " + self.destDateformatter.string(from: date)
-            }
         }
     }
     

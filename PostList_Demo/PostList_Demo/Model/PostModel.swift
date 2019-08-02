@@ -20,6 +20,6 @@ class PostModel : IsJsonable{
     required init(parameter: JSON) {
         postID         = parameter["objectID"].stringValue
         title          = parameter["title"].stringValue
-        createdAt      = parameter["created_at"].stringValue
+        createdAt      = parameter["created_at"].stringValue.createdAtString
     }
 }
